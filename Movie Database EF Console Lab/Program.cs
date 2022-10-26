@@ -14,7 +14,7 @@ namespace Movie_Database_EF_Console_Lab
 
             MovieCRUD sc = new MovieCRUD();
 
-            sc.userSelection();
+            sc.UserSelection();
 
         }
 

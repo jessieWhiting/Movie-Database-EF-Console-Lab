@@ -12,17 +12,19 @@ namespace Movie_Database_EF_Console_Lab.Models
 {
     internal class MovieCRUD
     {
-        public void userSelection()
+        public void UserSelection()
         {
             bool goAgain = true;
+           
 
             MovieContext db = new MovieContext();
 
             List<Movie> movies = db.Movies.ToList();
 
-
             Console.WriteLine("*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*");
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Movie List: ");
+            Console.ResetColor();
             Console.WriteLine("*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*");
 
 
@@ -48,12 +50,13 @@ namespace Movie_Database_EF_Console_Lab.Models
 
                     string userInput = Console.ReadLine().ToUpper();
 
-                    if (user == "HORROR" || user == "ACTION" || user == "DRAMA" || user =="COMEDY"
+                    if (user == "HORROR" || user == "ACTION" || user == "DRAMA" || user == "COMEDY"
                         || user == "ROMANCE")
                     {
-                    List<Movie> listGenres = SearchByGenre(userInput, movies);
+                        List<Movie> listGenres = SearchByGenre(userInput, movies);
 
-                    PrintMovies(listGenres);
+                        PrintMovies(listGenres);
+
 
                     }
                     else
@@ -65,7 +68,7 @@ namespace Movie_Database_EF_Console_Lab.Models
                         Console.ResetColor();
                         continue;
                     }
-                  
+
 
                 }
                 else if (user == "TITLE" || user == "T")
@@ -82,15 +85,29 @@ namespace Movie_Database_EF_Console_Lab.Models
                     Console.WriteLine("Gladiator ");
                     Console.WriteLine("Meet The Parents ");
                     Console.WriteLine("Jurassic Park ");
+                    Console.WriteLine("Bob The Butler");
+                    Console.WriteLine("Satan's Blood");
+                    Console.WriteLine("Factory Girl");
 
                     string input = Console.ReadLine().ToUpper().Trim();
 
                     List<Movie> listTitles = SearchByTitle(input, movies);
                     if (input == "THE CONJURING" || input == "PULP FICTION" || input == "THE SHAWSHANK REDEMPTION"
                         || input == "TRICK 'R TREAT" || input == "IDIOCRACY" || input == "GLADIATOR" || input == "MEET THE PARENTS"
-                        || input == "JURASSIC PARK")
+                        || input == "JURASSIC PARK" || input == "BOB THE BUTLER" || input == "SATAN'S BLOOD" || input == "FACTORY GIRL")
+
                     {
-                    PrintMovies(listTitles);
+                        PrintMovies(listTitles);
+
+                    }
+
+                    else
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*");
+                        Console.WriteLine("TITLE UNAVAILABLE");
+                        Console.WriteLine("*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*");
+                        Console.ResetColor();
 
                     }
                 }
@@ -98,11 +115,12 @@ namespace Movie_Database_EF_Console_Lab.Models
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*");
-                    Console.WriteLine("TITLE UNAVAILABLE");
+                    Console.WriteLine("INVALID INPUT");
                     Console.WriteLine("*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*");
                     Console.ResetColor();
-                    continue;
+                    UserSelection();
                 }
+                     
 
                         goAgain = GoAgain();
             }
@@ -154,7 +172,7 @@ namespace Movie_Database_EF_Console_Lab.Models
             foreach (Movie movie in movieList)
             {
              
-                Console.WriteLine($"{movie.Id}.) MOVIE: {movie.Title}||| GENRE: {movie.Genre}|||RUNTIME: {movie.Runtime} MINS");
+                Console.WriteLine($"{movie.Id}.) MOVIE: {movie.Title} ||| GENRE: {movie.Genre} |||RUNTIME: {movie.Runtime} MINS");
              
             }
 
