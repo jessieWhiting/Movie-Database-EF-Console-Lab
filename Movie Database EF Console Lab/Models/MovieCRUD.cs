@@ -14,8 +14,7 @@ namespace Movie_Database_EF_Console_Lab.Models
     {
         public void UserSelection()
         {
-            bool goAgain = true;
-           
+            bool goAgain = true;        
 
             MovieContext db = new MovieContext();
 
@@ -90,6 +89,7 @@ namespace Movie_Database_EF_Console_Lab.Models
                     Console.WriteLine("Factory Girl");
 
                     string input = Console.ReadLine().ToUpper().Trim();
+                    Console.Clear();
 
                     List<Movie> listTitles = SearchByTitle(input, movies);
                     if (input == "THE CONJURING" || input == "PULP FICTION" || input == "THE SHAWSHANK REDEMPTION"
@@ -121,7 +121,6 @@ namespace Movie_Database_EF_Console_Lab.Models
                     UserSelection();
                 }
                      
-
                         goAgain = GoAgain();
             }
         }
@@ -166,7 +165,9 @@ namespace Movie_Database_EF_Console_Lab.Models
         public void PrintMovies(List<Movie> movieList)
         {
             Console.WriteLine("*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*");
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("MOVIE DETAILS: ");
+            Console.ResetColor();
             Console.WriteLine("*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*");
 
             foreach (Movie movie in movieList)
@@ -175,8 +176,6 @@ namespace Movie_Database_EF_Console_Lab.Models
                 Console.WriteLine($"{movie.Id}.) MOVIE: {movie.Title} ||| GENRE: {movie.Genre} |||RUNTIME: {movie.Runtime} MINS");
              
             }
-
-            Console.WriteLine();
         }
     }
 }
