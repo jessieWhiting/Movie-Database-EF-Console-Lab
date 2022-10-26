@@ -48,8 +48,8 @@ namespace Movie_Database_EF_Console_Lab.Models
 
                     string userInput = Console.ReadLine().ToUpper();
 
-                    if (user == "HORROR" || user == "ACTION" || user == "DRAMA" || user == "COMEDY"
-                        || user == "ROMANCE")
+                    if (userInput == "HORROR" || userInput == "ACTION" || userInput == "DRAMA" || userInput == "COMEDY"
+                        || userInput == "ROMANCE")
                     {
                         List<Movie> listGenres = SearchByGenre(userInput, movies);
 
@@ -94,7 +94,6 @@ namespace Movie_Database_EF_Console_Lab.Models
                     if (input == "THE CONJURING" || input == "PULP FICTION" || input == "THE SHAWSHANK REDEMPTION"
                         || input == "TRICK 'R TREAT" || input == "IDIOCRACY" || input == "GLADIATOR" || input == "MEET THE PARENTS"
                         || input == "JURASSIC PARK" || input == "BOB THE BUTLER" || input == "SATAN'S BLOOD" || input == "FACTORY GIRL")
-
                     {
                         PrintMovies(listTitles);
 
