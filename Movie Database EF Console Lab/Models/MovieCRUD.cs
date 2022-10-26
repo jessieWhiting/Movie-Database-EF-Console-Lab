@@ -5,8 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Movie_Database_EF_Console_Lab;
-using static System.Collections.Specialized.BitVector32;
-using static System.Reflection.Metadata.BlobBuilder;
+
 
 namespace Movie_Database_EF_Console_Lab.Models
 {
